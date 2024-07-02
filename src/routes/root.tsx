@@ -3,10 +3,10 @@ import { Link, Outlet } from "react-router-dom";
 export function RootRoute() {
   return (
     <>
-      <header>
-        <h1>UpperWear</h1>
-        <nav>
-          <ul>
+      <header className="text-center py-4">
+        <h1 className="text-2xl">UpperWear</h1>
+        <nav className="mt-3">
+          <ul className="flex gap-8 justify-center">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -28,7 +28,7 @@ export function RootRoute() {
 
       <hr />
 
-      <main>
+      <main className="px-5 mt-5">
         <Outlet />
       </main>
     </>
