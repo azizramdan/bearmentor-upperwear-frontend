@@ -1,5 +1,4 @@
 import { Link, useLoaderData } from "react-router-dom";
-
 import { Product } from "../types";
 
 export async function loader() {
@@ -28,6 +27,7 @@ export function HomeRoute() {
                   height={480}
                 />
                 <h4>{product.title}</h4>
+                <h4>{product.variants[0].price}</h4>
               </div>
             </Link>
           </li>
