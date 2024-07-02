@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { Product } from "../types";
 
 export async function loader() {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/products`);
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
   const { data: products }: {
     data: Array<Product>;
   } = await response.json();
