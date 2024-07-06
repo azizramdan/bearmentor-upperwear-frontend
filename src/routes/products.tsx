@@ -52,6 +52,8 @@ export async function action({ request }: ActionFunctionArgs) {
       quantity: formData.get('quantity'),
     }
   })
+
+  alert('Success')
   
   return false
 }

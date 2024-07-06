@@ -18,6 +18,9 @@ export function RootRoute() {
             <li>
               <Link to="/collections/kemeja">Kemeja</Link>
             </li>
+            <li>
+              <Link to="/cart">Cart</Link>
+            </li>
           </ul>
         </nav>
       </header>

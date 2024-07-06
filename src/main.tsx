@@ -8,6 +8,7 @@ import { RootRoute } from "./routes/root";
 import * as homeRoute from "./routes/home";
 import * as collectionRoute from "./routes/collections";
 import * as productDetailRoute from "./routes/products";
+import * as cartRoute from './routes/cart'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
         element: <productDetailRoute.ProductDetailRoute />,
         loader: productDetailRoute.loader,
         action: productDetailRoute.action
+      },
+      {
+        path: '/cart',
+        element: <cartRoute.CartRoute />,
+        loader: cartRoute.loader,
       },
     ],
   },
