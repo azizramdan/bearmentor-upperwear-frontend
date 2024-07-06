@@ -10,6 +10,8 @@ const BASE_URL = import.meta.env.VITE_API_URL as string;
 const api = async <T>(path: string, options: ApiOptions = {}): Promise<T> => {
   const headers = new Headers(options.headers);
 
+  headers.set('Content-Type', 'application/json');
+
   // Add the Authorization header if it's not already set
   if (!headers.has('Authorization')) {
     // TODO: token bearer

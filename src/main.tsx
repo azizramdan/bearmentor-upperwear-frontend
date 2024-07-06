@@ -7,6 +7,7 @@ import "./index.css";
 import { RootRoute } from "./routes/root";
 import { HomeRoute, loader as homeLoader } from "./routes/home";
 import { CollectionRoute, loader as collectionLoader } from "./routes/collections";
+import * as productDetailRoute from "./routes/products";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,13 @@ const router = createBrowserRouter([
         path: '/collections/:slug',
         element: <CollectionRoute />,
         loader: collectionLoader,
-      }
+      },
+      {
+        path: '/products/:slug',
+        element: <productDetailRoute.ProductDetailRoute />,
+        loader: productDetailRoute.loader,
+        action: productDetailRoute.action
+      },
     ],
   },
 ]);
