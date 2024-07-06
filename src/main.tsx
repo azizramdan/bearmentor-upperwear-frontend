@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 
 import { RootRoute } from "./routes/root";
-import { HomeRoute, loader as homeLoader } from "./routes/home";
-import { CollectionRoute, loader as collectionLoader } from "./routes/collections";
+import * as homeRoute from "./routes/home";
+import * as collectionRoute from "./routes/collections";
 import * as productDetailRoute from "./routes/products";
 
 const router = createBrowserRouter([
@@ -16,13 +16,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomeRoute />,
-        loader: homeLoader,
+        element: <homeRoute.HomeRoute />,
+        loader: homeRoute.loader,
       },
       {
         path: '/collections/:slug',
-        element: <CollectionRoute />,
-        loader: collectionLoader,
+        element: <collectionRoute.CollectionRoute />,
+        loader: collectionRoute.loader,
       },
       {
         path: '/products/:slug',
