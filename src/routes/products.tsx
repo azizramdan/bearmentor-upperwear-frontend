@@ -65,6 +65,12 @@ export function ProductDetailRoute() {
 
   return (
     <>
+      <img
+        src={product.images[0].url}
+        alt={product.title}
+        width={384}
+        height={480}
+      />
       <h4 className="text-lg text-gray-600">{product.title}</h4>
       <h4 className="mt-2 text-gray-500">{toRupiah(selectedVariant.price)}</h4>
       
