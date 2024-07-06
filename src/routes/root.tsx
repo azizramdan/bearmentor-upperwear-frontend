@@ -1,6 +1,9 @@
+import { getSessionToken } from "@/utils/sessionToken";
 import { Link, Outlet } from "react-router-dom";
 
 export function RootRoute() {
+  getSessionToken();
+
   return (
     <>
       <header className="text-center py-4">

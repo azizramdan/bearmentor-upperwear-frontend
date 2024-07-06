@@ -1,3 +1,5 @@
+import { getSessionToken } from "./sessionToken";
+
 // Define the structure for the API options
 type ApiOptions = Omit<RequestInit, 'body'> & {
   body?: Record<string, unknown> | BodyInit;
@@ -15,6 +17,12 @@ const api = async <T>(path: string, options: ApiOptions = {}): Promise<T> => {
     if (token) {
       headers.set('Authorization', `Bearer ${token}`);
     }
+  }
+
+  if (!headers.has('X-Session-Token')) {
+    const token = getSessionToken()!;
+    
+    headers.set('X-Session-Token', token);
   }
 
   // Prepare the final options
