@@ -1,14 +1,14 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { Product } from "../types";
 import { toRupiah } from "@/utils/format";
+import api from "@/utils/api";
 
 export async function loader() {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/products`);
-  const { data: products }: {
-    data: Array<Product>;
-  } = await response.json();
+  const response = await api<{
+    data: Array<Product>
+  }>('/products');
 
-  return { products };
+  return { products: response.data }
 }
 
 export function HomeRoute() {
