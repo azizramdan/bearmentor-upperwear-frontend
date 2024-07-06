@@ -4,23 +4,16 @@ export function RootRoute() {
   return (
     <>
       <header className="text-center py-4">
-        <h1 className="text-2xl">UpperWear</h1>
+        <Link to="/">
+          <h1 className="text-2xl">UpperWear</h1>
+        </Link>
         <nav className="mt-3">
           <ul className="flex gap-8 justify-center">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/collections/t-shirt">T-Shirt</Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/me">Me</Link>
-            </li>
-            <li>
-              <Link to="/cart">Cart</Link>
+              <Link to="/collections/kemeja">Kemeja</Link>
             </li>
           </ul>
         </nav>

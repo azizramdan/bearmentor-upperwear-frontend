@@ -6,6 +6,7 @@ import "./index.css";
 
 import { RootRoute } from "./routes/root";
 import { HomeRoute, loader as homeLoader } from "./routes/home";
+import { CollectionRoute, loader as collectionLoader } from "./routes/collections";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
         element: <HomeRoute />,
         loader: homeLoader,
       },
+      {
+        path: '/collections/:slug',
+        element: <CollectionRoute />,
+        loader: collectionLoader,
+      }
     ],
   },
 ]);

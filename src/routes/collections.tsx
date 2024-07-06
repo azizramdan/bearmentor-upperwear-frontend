@@ -1,17 +1,17 @@
 import { Product } from "@/types";
 import api from "@/utils/api";
 import { toRupiah } from "@/utils/format";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, Params, useLoaderData } from "react-router-dom";
 
-export async function loader() {
+export async function loader({ params }: { params: Params<'slug'> }) {
   const response = await api<{
     data: Array<Product>
-  }>('/products');
+  }>(`/collections/${params.slug}`);
 
   return { products: response.data }
 }
 
-export function HomeRoute() {
+export function CollectionRoute() {
   const { products } = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
   const getPriceRange = (priceRange: Array<number>) => {
