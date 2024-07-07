@@ -30,7 +30,7 @@ type Item = {
 export async function loader() {
   const response = await api<{
     data: Array<Item>
-  }>('/carts');
+  }>('/cart');
 
   return { items: response.data }
 }
