@@ -1,18 +1,19 @@
-import { Product } from "@/types";
-import api from "@/utils/api";
-import { toRupiah } from "@/utils/format";
-import { Link, Params, useLoaderData } from "react-router-dom";
+import type { Params } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
+import type { Product } from '@/types'
+import api from '@/utils/api'
+import { toRupiah } from '@/utils/format'
 
 export async function loader({ params }: { params: Params<'slug'> }) {
   const response = await api<{
     data: Array<Product>
-  }>(`/collections/${params.slug}`);
+  }>(`/collections/${params.slug}`)
 
   return { products: response.data }
 }
 
 export function CollectionRoute() {
-  const { products } = useLoaderData() as Awaited<ReturnType<typeof loader>>;
+  const { products } = useLoaderData() as Awaited<ReturnType<typeof loader>>
 
   const getPriceRange = (priceRange: Array<number>) => {
     const low = priceRange[0]
@@ -24,7 +25,7 @@ export function CollectionRoute() {
   return (
     <>
       <ul className="grid grid-cols-4 gap-10">
-        {products.map((product) => (
+        {products.map(product => (
           <li key={product.id} className="flex justify-center">
             <div className="w-fit">
               <Link to={`/products/${product.slug}`} className="block">
@@ -44,5 +45,5 @@ export function CollectionRoute() {
         ))}
       </ul>
     </>
-  );
+  )
 }

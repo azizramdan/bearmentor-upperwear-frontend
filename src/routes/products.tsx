@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button";
-import api from "@/utils/api";
-import { toRupiah } from "@/utils/format";
-import { useState } from "react";
-import { ActionFunctionArgs, Form, Params, useLoaderData } from "react-router-dom";
+import { useState } from 'react'
+import type { ActionFunctionArgs, Params } from 'react-router-dom'
+import { Form, useLoaderData } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import api from '@/utils/api'
+import { toRupiah } from '@/utils/format'
 
 type ProductDetail = {
   id: string
@@ -36,7 +37,7 @@ type ProductDetail = {
 export async function loader({ params }: { params: Params<'slug'> }) {
   const response = await api<{
     data: ProductDetail
-  }>(`/products/${params.slug}`);
+  }>(`/products/${params.slug}`)
 
   return { product: response.data }
 }
@@ -50,18 +51,18 @@ export async function action({ request }: ActionFunctionArgs) {
       productId: formData.get('productId'),
       productVariantId: formData.get('productVariantId'),
       quantity: formData.get('quantity'),
-    }
+    },
   })
 
-  alert('Success')
-  
+  // alert('Success')
+
   return false
 }
 
 export function ProductDetailRoute() {
-  const { product } = useLoaderData() as Awaited<ReturnType<typeof loader>>;
+  const { product } = useLoaderData() as Awaited<ReturnType<typeof loader>>
 
-  const [selectedVariant] = useState(product.variants[0]);
+  const [selectedVariant] = useState(product.variants[0])
 
   return (
     <>
@@ -73,11 +74,14 @@ export function ProductDetailRoute() {
       />
       <h4 className="text-lg text-gray-600">{product.title}</h4>
       <h4 className="mt-2 text-gray-500">{toRupiah(selectedVariant.price)}</h4>
-      
+
       <div className="mt-6">
         {product.options.map(option => (
           <div key={option.id}>
-            <div>{option.name}:</div>
+            <div>
+              {option.name}
+              :
+            </div>
             <ul className="flex gap-3">
               {option.values.map(value => (
                 <li key={value.id}>
@@ -109,5 +113,5 @@ export function ProductDetailRoute() {
         <div className="text-gray-700" dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}></div>
       </div>
     </>
-  );
+  )
 }

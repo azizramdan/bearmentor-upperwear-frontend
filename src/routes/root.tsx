@@ -1,8 +1,8 @@
-import { getSessionToken } from "@/utils/sessionToken";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from 'react-router-dom'
+import { getSessionToken } from '@/utils/sessionToken'
 
 export function RootRoute() {
-  getSessionToken();
+  getSessionToken()
 
   return (
     <>
@@ -31,5 +31,5 @@ export function RootRoute() {
         <Outlet />
       </main>
     </>
-  );
+  )
 }
