@@ -4,5 +4,5 @@ export function toRupiah(value: number) {
     currency: 'IDR',
     maximumFractionDigits: 0,
   })
-  .format(value)
+    .format(value)
 }
