@@ -44,7 +44,7 @@ export async function loader({ params }: { params: Params<'slug'> }) {
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData()
 
-  await api('/carts', {
+  await api('/cart', {
     method: 'post',
     body: {
       productId: formData.get('productId'),
